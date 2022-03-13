@@ -1,0 +1,427 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap");
+
+$text_white: #e0ddfa;
+$text_grey: #a8a8a8;
+$text_dark: rgb(22, 22, 24);
+$background1: #dbdbdb;
+$background2: rgb(22, 22, 24);
+$accent1: #634bff;
+$accent1_hover: #3b1cff;
+$max_width: 1400px;
+$max_width2: 800px;
+$doneColor: green;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: $text_white;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Nunito";
+  color: $text_dark;
+  background-color: $background1;
+}
+
+img {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+button {
+  background-color: transparent;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: $text_white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+input {
+  outline: none;
+  border: none;
+  height: fit-content;
+  width: 100%;
+  font-size: 22px;
+  background-color: $text_white;
+  padding: 15px;
+  border: 3px solid $text_white;
+  border-radius: 15px;
+  transition: 0.3s;
+  &:focus {
+    border: 3px solid $accent1;
+  }
+}
+
+// MAIN LAYOUT
+.layout {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  margin: 0 auto;
+  max-width: $max_width;
+
+  .navBar {
+    background-color: $background1;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 250px;
+    text-align: center;
+
+    h4 {
+      margin-top: 10px;
+    }
+
+    .navHeader {
+      display: grid;
+      grid-template-columns: 1fr;
+      place-items: center;
+    }
+
+    .navButtons {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 20px;
+
+      button {
+        text-align: left;
+        width: fit-content;
+        font-size: 22px;
+        letter-spacing: 2px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        padding: 10px 15px;
+        border-radius: 20px;
+        color: $text_dark;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        grid-template-columns: 35px 1fr;
+        grid-gap: 10px;
+        transition: 0.3s;
+
+        &:hover {
+          color: $text_white;
+          background-color: $accent1;
+        }
+      }
+
+      .selected {
+        color: $text_white;
+        background-color: $accent1;
+      }
+    }
+
+    .navFooter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+  @media (max-width: 1150px) {
+    .navBar {
+      padding: 30px;
+      h4 {
+        display: none;
+      }
+      .navButtons {
+        place-items: center;
+        grid-gap: 40px;
+        button {
+          font-size: 28px;
+          grid-gap: 0px;
+          p {
+            display: none;
+          }
+        }
+      }
+      .navFooter {
+        justify-content: center;
+        h1 {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .content {
+    width: 100%;
+
+    background-color: $background1;
+    overflow: hidden;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .mainContent {
+      padding: 15px;
+      background-color: $background1;
+      overflow: auto;
+      height: 100%;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .layout {
+    position: relative;
+
+    .navBar {
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      padding: 10px;
+      overflow-x: scroll;
+      max-width: 100%;
+      .navHeader {
+        display: none;
+      }
+
+      .navButtons {
+        display: flex;
+        justify-content: space-between;
+        grid-gap: 10px;
+        button {
+          grid-gap: 0px;
+          font-size: 22px;
+          padding: 10px;
+          p {
+            display: none;
+          }
+        }
+      }
+
+      .navFooter {
+        display: none;
+      }
+    }
+
+    .content {
+      padding-bottom: 68px;
+    }
+  }
+}
+
+// REUSABLE COMPONENTS
+.inputField {
+  border-radius: 15px;
+  background-color: $background2;
+  color: $text_white;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  input {
+    margin-top: 10px;
+  }
+  button {
+    background-color: $accent1;
+
+    &:hover {
+      background-color: $accent1_hover;
+    }
+  }
+}
+.modalContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.604);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  overflow: scroll;
+  z-index: 999;
+
+  .modalContent {
+    height: fit-content;
+    width: 100%;
+    max-width: 650px;
+    border-radius: 15px;
+    background-color: $text_white;
+
+    .modal {
+      color: $background1;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .modalHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: $text_dark;
+      .closeBtn {
+        font-size: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+// PAGES
+.studentPageContainer {
+  display: grid;
+  place-items: center;
+  .feedBackButtonsContainer {
+    max-width: $max_width2;
+    width: 100%;
+
+    .buttonsGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 800px) {
+      .buttonsGrid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feedbackButton {
+      min-height: 100px;
+      width: 100%;
+      border-radius: 15px;
+      background-color: $background2;
+      display: grid;
+      grid-template-columns: 1fr 80px;
+      place-items: center;
+      color: $text_white;
+      text-align: center;
+      overflow: hidden;
+      cursor: pointer;
+
+      h2 {
+        padding: 10px;
+      }
+      .icon {
+        display: grid;
+        place-items: center;
+        height: 100%;
+        width: 100%;
+        font-size: 45px;
+        padding: 10px;
+      }
+      .done {
+        background-color: green;
+      }
+    }
+    .institute {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.facultyPageContainer {
+  display: grid;
+  place-items: center;
+  .facultyContainer {
+    max-width: $max_width2;
+    width: 100%;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 800px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .facultyListItem {
+    display: grid;
+    place-items: center;
+    min-height: 80px;
+    grid-template-columns: 1fr 80px;
+    border-radius: 15px;
+    background-color: $background2;
+    color: $text_white;
+    text-align: center;
+    h2 {
+      padding: 10px;
+    }
+    .icon {
+      font-size: 22px;
+      cursor: pointer;
+    }
+  }
+}
+
+.classesPageContainer {
+  display: grid;
+  place-items: center;
+  .classesContainer {
+    max-width: $max_width2;
+    width: 100%;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 800px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .classListItem {
+    display: grid;
+    place-items: center;
+    min-height: 80px;
+    grid-template-columns: 1fr 60px;
+    border-radius: 15px;
+    background-color: $background2;
+    color: $text_white;
+    h2 {
+      padding: 10px;
+    }
+    .icon {
+      background-color: $accent1;
+      display: grid;
+      place-items: center;
+      border-radius: 0 14px 14px 0;
+      height: 100%;
+      width: 100%;
+      font-size: 22px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: $accent1_hover;
+      }
+    }
+  }
+}

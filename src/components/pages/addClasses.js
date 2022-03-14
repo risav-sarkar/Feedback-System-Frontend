@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImages } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
@@ -11,6 +9,8 @@ const AddStudent = () => {
   const [classList, setClassList] = useState([]);
   const nameRef = useRef("");
   const formRef = useRef();
+
+  console.log(classList);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -40,6 +40,7 @@ const AddStudent = () => {
                     type="text"
                     ref={nameRef}
                     placeholder={"Type Class Name"}
+                    required
                   />
                 </div>
                 <button type="submit">Add</button>
@@ -54,7 +55,12 @@ const AddStudent = () => {
                         newUsers.splice(index, 1);
                         setClassList(newUsers);
                       }}
-                      submitFunc={() => {}}
+                      submitFunc={(students, faculty) => {
+                        const newUsers = classList.slice();
+                        newUsers[index].faculty = faculty;
+                        newUsers[index].students = students;
+                        setClassList(newUsers);
+                      }}
                       key={`facultyItem${index}`}
                     />
                   );

@@ -18,7 +18,7 @@ const StudentHome = () => {
           <div className="studentPageContainer">
             <div className="feedBackButtonsContainer">
               <InstituteFeedbackButton />
-              <div className="buttonsGrid">
+              <div className="grid">
                 <FacultyFeedbackButton />
                 <FacultyFeedbackButton />
                 <FacultyFeedbackButton />

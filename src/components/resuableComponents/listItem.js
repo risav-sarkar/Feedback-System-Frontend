@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const FacultyListItem = ({ name, deleteFunc }) => {
+const ListItem = ({ name, deleteFunc }) => {
   return (
-    <div className="facultyListItem">
+    <div className="listItem">
       <h2>{name}</h2>
       <div
         className="icon"
@@ -17,4 +17,4 @@ const FacultyListItem = ({ name, deleteFunc }) => {
   );
 };
 
-export default FacultyListItem;
+export default ListItem;

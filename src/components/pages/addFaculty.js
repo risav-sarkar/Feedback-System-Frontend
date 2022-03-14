@@ -4,15 +4,13 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import Navbar from "../resuableComponents/navbar";
-import FacultyListItem from "../resuableComponents/facultyListItem";
+import ListItem from "../resuableComponents/listItem";
 
 const AddFaculty = () => {
   // const { user } = useContext(AuthContext);
   const [facultyList, setFacultyList] = useState([]);
   const nameRef = useRef("");
   const formRef = useRef();
-
-  console.log(facultyList);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +37,7 @@ const AddFaculty = () => {
                     type="text"
                     ref={nameRef}
                     placeholder={"Type Faculty Name"}
+                    required
                   />
                 </div>
                 <button type="submit">Add</button>
@@ -46,7 +45,7 @@ const AddFaculty = () => {
               <div className="grid">
                 {facultyList.map((e, index) => {
                   return (
-                    <FacultyListItem
+                    <ListItem
                       name={e}
                       deleteFunc={() => {
                         const newUsers = facultyList.slice();

@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap");
 
-$text_white: #e0ddfa;
+$text_white: #f5f4f7;
 $text_grey: #a8a8a8;
 $text_dark: rgb(22, 22, 24);
 $background1: #dbdbdb;
 $background2: rgb(22, 22, 24);
-$accent1: #634bff;
+$accent1: #3c26ca;
 $accent1_hover: #3b1cff;
 $max_width: 1400px;
 $max_width2: 800px;
@@ -260,23 +260,26 @@ input {
   display: grid;
   place-items: center;
   padding: 10px;
-  overflow: scroll;
+  overflow: hidden;
   z-index: 999;
 
   .modalContent {
-    height: fit-content;
+    height: 100%;
     width: 100%;
     max-width: 650px;
     border-radius: 15px;
-    background-color: $text_white;
+    overflow: scroll;
 
     .modal {
       color: $background1;
+      background-color: $text_white;
+      border-radius: 15px;
       padding: 10px;
       text-align: center;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      width: 100%;
     }
     .modalHeader {
       display: flex;
@@ -291,6 +294,56 @@ input {
     }
   }
 }
+.listItem {
+  display: grid;
+  place-items: center;
+  min-height: 80px;
+  grid-template-columns: 1fr 80px;
+  border-radius: 15px;
+  background-color: $background2;
+  color: $text_white;
+  text-align: center;
+  h2 {
+    padding: 10px;
+  }
+  .icon {
+    padding: 10px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+.marginBottom {
+  margin-bottom: 30px;
+}
+.marginTop {
+  margin-top: 30px;
+}
+
+//SNIPPETS
+.Dropdown-control {
+  border-radius: 15px !important;
+  display: grid;
+  place-items: center;
+  background-color: $text_white !important;
+  font-size: 20px;
+  cursor: pointer !important;
+}
+.Dropdown-menu {
+  border-radius: 15px !important;
+  margin-top: 5px !important;
+  background-color: $text_white !important;
+}
+
 // PAGES
 .studentPageContainer {
   display: grid;
@@ -298,17 +351,6 @@ input {
   .feedBackButtonsContainer {
     max-width: $max_width2;
     width: 100%;
-
-    .buttonsGrid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    @media (max-width: 800px) {
-      .buttonsGrid {
-        grid-template-columns: 1fr;
-      }
-    }
 
     .feedbackButton {
       min-height: 100px;
@@ -351,33 +393,6 @@ input {
     max-width: $max_width2;
     width: 100%;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  @media (max-width: 800px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .facultyListItem {
-    display: grid;
-    place-items: center;
-    min-height: 80px;
-    grid-template-columns: 1fr 80px;
-    border-radius: 15px;
-    background-color: $background2;
-    color: $text_white;
-    text-align: center;
-    h2 {
-      padding: 10px;
-    }
-    .icon {
-      font-size: 22px;
-      cursor: pointer;
-    }
-  }
 }
 
 .classesPageContainer {
@@ -386,16 +401,6 @@ input {
   .classesContainer {
     max-width: $max_width2;
     width: 100%;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  @media (max-width: 800px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
   }
   .classListItem {
     display: grid;
@@ -421,6 +426,29 @@ input {
 
       &:hover {
         background-color: $accent1_hover;
+      }
+    }
+    .flexBox {
+      display: flex;
+      gap: 10px;
+      overflow-x: scroll;
+      .listItem {
+        grid-template-columns: auto auto;
+      }
+    }
+    h3,
+    h4 {
+      text-align: left;
+      color: $text_dark;
+    }
+    .btnContainer {
+      display: flex;
+      gap: 15px;
+      button {
+        height: 50px;
+        font-size: 20px;
+        width: 100%;
+        background-color: $background2;
       }
     }
   }

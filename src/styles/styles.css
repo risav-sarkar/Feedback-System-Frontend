@@ -8,7 +8,7 @@
 
 a {
   text-decoration: none;
-  color: #e0ddfa;
+  color: #f5f4f7;
 }
 
 html {
@@ -40,7 +40,7 @@ button {
   outline: none;
   padding: 8px 16px;
   cursor: pointer;
-  color: #e0ddfa;
+  color: #f5f4f7;
   font-size: 16px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -54,16 +54,16 @@ input {
   height: fit-content;
   width: 100%;
   font-size: 22px;
-  background-color: #e0ddfa;
+  background-color: #f5f4f7;
   padding: 15px;
-  border: 3px solid #e0ddfa;
+  border: 3px solid #f5f4f7;
   border-radius: 15px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
 input:focus {
-  border: 3px solid #634bff;
+  border: 3px solid #3c26ca;
 }
 
 .layout {
@@ -141,13 +141,13 @@ input:focus {
 }
 
 .layout .navBar .navButtons button:hover {
-  color: #e0ddfa;
-  background-color: #634bff;
+  color: #f5f4f7;
+  background-color: #3c26ca;
 }
 
 .layout .navBar .navButtons .selected {
-  color: #e0ddfa;
-  background-color: #634bff;
+  color: #f5f4f7;
+  background-color: #3c26ca;
 }
 
 .layout .navBar .navFooter {
@@ -253,7 +253,7 @@ input:focus {
 .inputField {
   border-radius: 15px;
   background-color: #161618;
-  color: #e0ddfa;
+  color: #f5f4f7;
   padding: 15px;
   display: -ms-grid;
   display: grid;
@@ -268,7 +268,7 @@ input:focus {
 }
 
 .inputField button {
-  background-color: #634bff;
+  background-color: #3c26ca;
 }
 
 .inputField button:hover {
@@ -286,22 +286,22 @@ input:focus {
   display: grid;
   place-items: center;
   padding: 10px;
-  overflow: scroll;
+  overflow: hidden;
   z-index: 999;
 }
 
 .modalContainer .modalContent {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 100%;
   width: 100%;
   max-width: 650px;
   border-radius: 15px;
-  background-color: #e0ddfa;
+  overflow: scroll;
 }
 
 .modalContainer .modalContent .modal {
   color: #dbdbdb;
+  background-color: #f5f4f7;
+  border-radius: 15px;
   padding: 10px;
   text-align: center;
   display: -webkit-box;
@@ -312,6 +312,7 @@ input:focus {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 
 .modalContainer .modalContent .modalHeader {
@@ -333,6 +334,68 @@ input:focus {
   cursor: pointer;
 }
 
+.listItem {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  min-height: 80px;
+  -ms-grid-columns: 1fr 80px;
+      grid-template-columns: 1fr 80px;
+  border-radius: 15px;
+  background-color: #161618;
+  color: #f5f4f7;
+  text-align: center;
+}
+
+.listItem h2 {
+  padding: 10px;
+}
+
+.listItem .icon {
+  padding: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+.marginBottom {
+  margin-bottom: 30px;
+}
+
+.marginTop {
+  margin-top: 30px;
+}
+
+.Dropdown-control {
+  border-radius: 15px !important;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background-color: #f5f4f7 !important;
+  font-size: 20px;
+  cursor: pointer !important;
+}
+
+.Dropdown-menu {
+  border-radius: 15px !important;
+  margin-top: 5px !important;
+  background-color: #f5f4f7 !important;
+}
+
 .studentPageContainer {
   display: -ms-grid;
   display: grid;
@@ -342,21 +405,6 @@ input:focus {
 .studentPageContainer .feedBackButtonsContainer {
   max-width: 800px;
   width: 100%;
-}
-
-.studentPageContainer .feedBackButtonsContainer .buttonsGrid {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-@media (max-width: 800px) {
-  .studentPageContainer .feedBackButtonsContainer .buttonsGrid {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
 }
 
 .studentPageContainer .feedBackButtonsContainer .feedbackButton {
@@ -369,7 +417,7 @@ input:focus {
   -ms-grid-columns: 1fr 80px;
       grid-template-columns: 1fr 80px;
   place-items: center;
-  color: #e0ddfa;
+  color: #f5f4f7;
   text-align: center;
   overflow: hidden;
   cursor: pointer;
@@ -408,43 +456,6 @@ input:focus {
   width: 100%;
 }
 
-.facultyPageContainer .grid {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-@media (max-width: 800px) {
-  .facultyPageContainer .grid {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-}
-
-.facultyPageContainer .facultyListItem {
-  display: -ms-grid;
-  display: grid;
-  place-items: center;
-  min-height: 80px;
-  -ms-grid-columns: 1fr 80px;
-      grid-template-columns: 1fr 80px;
-  border-radius: 15px;
-  background-color: #161618;
-  color: #e0ddfa;
-  text-align: center;
-}
-
-.facultyPageContainer .facultyListItem h2 {
-  padding: 10px;
-}
-
-.facultyPageContainer .facultyListItem .icon {
-  font-size: 22px;
-  cursor: pointer;
-}
-
 .classesPageContainer {
   display: -ms-grid;
   display: grid;
@@ -456,21 +467,6 @@ input:focus {
   width: 100%;
 }
 
-.classesPageContainer .grid {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-@media (max-width: 800px) {
-  .classesPageContainer .grid {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-}
-
 .classesPageContainer .classListItem {
   display: -ms-grid;
   display: grid;
@@ -480,7 +476,7 @@ input:focus {
       grid-template-columns: 1fr 60px;
   border-radius: 15px;
   background-color: #161618;
-  color: #e0ddfa;
+  color: #f5f4f7;
 }
 
 .classesPageContainer .classListItem h2 {
@@ -488,7 +484,7 @@ input:focus {
 }
 
 .classesPageContainer .classListItem .icon {
-  background-color: #634bff;
+  background-color: #3c26ca;
   display: -ms-grid;
   display: grid;
   place-items: center;
@@ -503,4 +499,37 @@ input:focus {
 
 .classesPageContainer .classListItem .icon:hover {
   background-color: #3b1cff;
+}
+
+.classesPageContainer .classListItem .flexBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+}
+
+.classesPageContainer .classListItem .flexBox .listItem {
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+}
+
+.classesPageContainer .classListItem h3,
+.classesPageContainer .classListItem h4 {
+  text-align: left;
+  color: #161618;
+}
+
+.classesPageContainer .classListItem .btnContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+}
+
+.classesPageContainer .classListItem .btnContainer button {
+  height: 50px;
+  font-size: 20px;
+  width: 100%;
+  background-color: #161618;
 }

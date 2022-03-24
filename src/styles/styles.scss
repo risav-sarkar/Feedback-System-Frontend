@@ -249,6 +249,10 @@ input {
       background-color: $accent1_hover;
     }
   }
+  .grid {
+    gap: 10px;
+    grid-template-columns: 1fr;
+  }
 }
 .modalContainer {
   width: 100vw;
@@ -269,6 +273,8 @@ input {
     max-width: 650px;
     border-radius: 15px;
     overflow: scroll;
+    display: grid;
+    place-items: center !important;
 
     .modal {
       color: $background1;
@@ -280,12 +286,14 @@ input {
       flex-direction: column;
       gap: 10px;
       width: 100%;
+      overflow: hidden;
     }
     .modalHeader {
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: $text_dark;
+      padding-left: 10px;
       .closeBtn {
         font-size: 20px;
         padding: 10px 20px;
@@ -302,9 +310,18 @@ input {
   border-radius: 15px;
   background-color: $background2;
   color: $text_white;
-  text-align: center;
+  overflow: hidden;
+  .textFields {
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
   h2 {
     padding: 10px;
+  }
+  h3 {
+    padding: 0 10px 10px 10px;
+    color: $text_white !important;
   }
   .icon {
     padding: 10px;
@@ -328,7 +345,9 @@ input {
 .marginTop {
   margin-top: 30px;
 }
-
+.italic {
+  font-style: italic;
+}
 //SNIPPETS
 .Dropdown-control {
   border-radius: 15px !important;
@@ -342,6 +361,29 @@ input {
   border-radius: 15px !important;
   margin-top: 5px !important;
   background-color: $text_white !important;
+}
+.ql-container {
+  border: none;
+
+  p {
+    font-size: 20px;
+    color: $text_dark;
+  }
+  .ql-editor {
+    border: 3px solid $background2;
+    border-radius: 15px;
+    transition: 0.3s;
+
+    &:focus {
+      border: 3px solid rgb(0, 0, 126);
+    }
+  }
+  .ql-editor.ql-blank::before {
+    padding-left: 10px;
+  }
+}
+.ql-container.ql-snow {
+  border: none !important;
 }
 
 // PAGES
@@ -383,6 +425,24 @@ input {
     .institute {
       margin-bottom: 10px;
     }
+    .modal {
+      h3 {
+        text-align: left;
+        padding: 0 10px;
+        color: $text_dark;
+      }
+      h4 {
+        color: rgb(60, 60, 60);
+      }
+      button {
+        background-color: $accent1;
+        font-size: 20px;
+        padding: 10px 30px;
+        &:hover {
+          background-color: $accent1_hover;
+        }
+      }
+    }
   }
 }
 
@@ -401,6 +461,9 @@ input {
   .classesContainer {
     max-width: $max_width2;
     width: 100%;
+    .grid {
+      margin-top: 15px;
+    }
   }
   .classListItem {
     display: grid;
@@ -433,7 +496,7 @@ input {
       gap: 10px;
       overflow-x: scroll;
       .listItem {
-        grid-template-columns: auto auto;
+        grid-template-columns: 1fr 1fr;
       }
     }
     h3,
@@ -450,6 +513,10 @@ input {
         width: 100%;
         background-color: $background2;
       }
+    }
+    .classGrid {
+      display: grid;
+      gap: 15px;
     }
   }
 }

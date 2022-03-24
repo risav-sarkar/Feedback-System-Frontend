@@ -87,7 +87,7 @@ const ClassListItem = ({ data, deleteFunc, submitFunc }) => {
                 <h4>No Faculty Added To This Class!</h4>
               ) : null}
 
-              <div className="flexBox marginBottom">
+              <div className="classGrid marginBottom">
                 {faculty.map((e, index) => {
                   return (
                     <ListItem
@@ -132,11 +132,12 @@ const ClassListItem = ({ data, deleteFunc, submitFunc }) => {
                 <h4>No Students Added To This Class!</h4>
               ) : null}
 
-              <div className="grid">
+              <div className="classGrid">
                 {students.map((e, index) => {
                   return (
                     <ListItem
                       name={e.name}
+                      email={e.email}
                       deleteFunc={() => {
                         const newUsers = students.slice();
                         newUsers.splice(index, 1);

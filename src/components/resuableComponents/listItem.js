@@ -1,10 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const ListItem = ({ name, deleteFunc }) => {
+const ListItem = ({ name, email, deleteFunc }) => {
   return (
     <div className="listItem">
-      <h2>{name}</h2>
+      <div className="textFields">
+        <h2>{name}</h2>
+        {email ? <h3>{email}</h3> : null}
+      </div>
       <div
         className="icon"
         onClick={() => {

@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 import AdminHome from "./components/pages/adminHome";
@@ -17,8 +17,10 @@ import Settings from "./components/pages/settings";
 import Login from "./components/pages/login";
 
 const App = () => {
-  const { user } = useContext(AuthContext);
+  const { user, institute } = useContext(AuthContext);
   console.log(user);
+  console.log(institute);
+
   return (
     <Router>
       <Routes>

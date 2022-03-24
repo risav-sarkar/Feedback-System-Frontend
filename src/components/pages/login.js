@@ -11,15 +11,15 @@ const Login = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    // loginCallAdmin(
-    //   { email: email.current.value, password: password.current.value },
-    //   dispatch
-    // );
-
-    loginCallStudent(
+    loginCallAdmin(
       { email: email.current.value, password: password.current.value },
       dispatch
     );
+
+    // loginCallStudent(
+    //   { email: email.current.value, password: password.current.value },
+    //   dispatch
+    // );
   };
 
   return (

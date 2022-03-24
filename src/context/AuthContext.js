@@ -3,6 +3,8 @@ import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem("userFeedBackSystem")) || null,
+  institute:
+    JSON.parse(localStorage.getItem("instituteFeedBackSystem")) || null,
   isFetching: false,
   error: false,
 };
@@ -21,10 +23,18 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem("userFeedBackSystem", JSON.stringify(state.user));
   }, [state.user]);
 
+  useEffect(() => {
+    localStorage.setItem(
+      "instituteFeedBackSystem",
+      JSON.stringify(state.institute)
+    );
+  }, [state.institute]);
+
   return (
     <AuthContext.Provider
       value={{
         user: state.user,
+        institute: state.institute,
         isFetching: state.isFetching,
         error: state.error,
         dispatch,

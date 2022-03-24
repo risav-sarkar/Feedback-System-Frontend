@@ -275,6 +275,12 @@ input:focus {
   background-color: #3b1cff;
 }
 
+.inputField .grid {
+  gap: 10px;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
 .modalContainer {
   width: 100vw;
   height: 100vh;
@@ -296,6 +302,9 @@ input:focus {
   max-width: 650px;
   border-radius: 15px;
   overflow: scroll;
+  display: -ms-grid;
+  display: grid;
+  place-items: center !important;
 }
 
 .modalContainer .modalContent .modal {
@@ -313,6 +322,7 @@ input:focus {
           flex-direction: column;
   gap: 10px;
   width: 100%;
+  overflow: hidden;
 }
 
 .modalContainer .modalContent .modalHeader {
@@ -326,6 +336,7 @@ input:focus {
       -ms-flex-align: center;
           align-items: center;
   color: #161618;
+  padding-left: 10px;
 }
 
 .modalContainer .modalContent .modalHeader .closeBtn {
@@ -344,11 +355,23 @@ input:focus {
   border-radius: 15px;
   background-color: #161618;
   color: #f5f4f7;
-  text-align: center;
+  overflow: hidden;
+}
+
+.listItem .textFields {
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
 }
 
 .listItem h2 {
   padding: 10px;
+}
+
+.listItem h3 {
+  padding: 0 10px 10px 10px;
+  color: #f5f4f7 !important;
 }
 
 .listItem .icon {
@@ -380,6 +403,10 @@ input:focus {
   margin-top: 30px;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .Dropdown-control {
   border-radius: 15px !important;
   display: -ms-grid;
@@ -394,6 +421,34 @@ input:focus {
   border-radius: 15px !important;
   margin-top: 5px !important;
   background-color: #f5f4f7 !important;
+}
+
+.ql-container {
+  border: none;
+}
+
+.ql-container p {
+  font-size: 20px;
+  color: #161618;
+}
+
+.ql-container .ql-editor {
+  border: 3px solid #161618;
+  border-radius: 15px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.ql-container .ql-editor:focus {
+  border: 3px solid #00007e;
+}
+
+.ql-container .ql-editor.ql-blank::before {
+  padding-left: 10px;
+}
+
+.ql-container.ql-snow {
+  border: none !important;
 }
 
 .studentPageContainer {
@@ -445,6 +500,26 @@ input:focus {
   margin-bottom: 10px;
 }
 
+.studentPageContainer .feedBackButtonsContainer .modal h3 {
+  text-align: left;
+  padding: 0 10px;
+  color: #161618;
+}
+
+.studentPageContainer .feedBackButtonsContainer .modal h4 {
+  color: #3c3c3c;
+}
+
+.studentPageContainer .feedBackButtonsContainer .modal button {
+  background-color: #3c26ca;
+  font-size: 20px;
+  padding: 10px 30px;
+}
+
+.studentPageContainer .feedBackButtonsContainer .modal button:hover {
+  background-color: #3b1cff;
+}
+
 .facultyPageContainer {
   display: -ms-grid;
   display: grid;
@@ -465,6 +540,10 @@ input:focus {
 .classesPageContainer .classesContainer {
   max-width: 800px;
   width: 100%;
+}
+
+.classesPageContainer .classesContainer .grid {
+  margin-top: 15px;
 }
 
 .classesPageContainer .classListItem {
@@ -510,8 +589,8 @@ input:focus {
 }
 
 .classesPageContainer .classListItem .flexBox .listItem {
-  -ms-grid-columns: auto auto;
-      grid-template-columns: auto auto;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 }
 
 .classesPageContainer .classListItem h3,
@@ -532,4 +611,10 @@ input:focus {
   font-size: 20px;
   width: 100%;
   background-color: #161618;
+}
+
+.classesPageContainer .classListItem .classGrid {
+  display: -ms-grid;
+  display: grid;
+  gap: 15px;
 }

@@ -27,10 +27,6 @@ const StudentHome = () => {
                 <FacultyFeedbackButton />
                 <FacultyFeedbackButton />
                 <FacultyFeedbackButton />
-                <FacultyFeedbackButton />
-                <FacultyFeedbackButton />
-                <FacultyFeedbackButton />
-                <FacultyFeedbackButton />
               </div>
             </div>
           </div>

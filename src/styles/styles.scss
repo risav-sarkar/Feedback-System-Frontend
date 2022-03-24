@@ -61,7 +61,7 @@ input {
   border: none;
   height: fit-content;
   width: 100%;
-  font-size: 22px;
+  font-size: 18px;
   background-color: $text_white;
   padding: 15px;
   border: 3px solid $text_white;
@@ -348,6 +348,7 @@ input {
 .italic {
   font-style: italic;
 }
+
 //SNIPPETS
 .Dropdown-control {
   border-radius: 15px !important;
@@ -517,6 +518,78 @@ input {
     .classGrid {
       display: grid;
       gap: 15px;
+    }
+  }
+}
+
+.loginPageContainer {
+  padding: 10px;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  .login {
+    max-width: 500px;
+    width: 100%;
+  }
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    place-items: center;
+
+    .tab {
+      padding: 10px;
+      width: 100%;
+      border-radius: 15px;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 10px;
+
+      &:hover {
+        background-color: $text_grey;
+      }
+    }
+    .selected {
+      background-color: #fff;
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+  .loginContent {
+    padding: 10px 10px 20px 10px;
+    background-color: #fff;
+    border-radius: 15px;
+  }
+  .loginBox {
+    display: grid;
+    gap: 10px;
+    h1 {
+      padding: 10px 0 0 10px;
+      margin-bottom: 8px;
+    }
+    input {
+      background-color: transparent;
+      border: 3px solid $background2;
+      &:focus {
+        border: 3px solid $accent1;
+      }
+    }
+    button {
+      max-width: 200px;
+    }
+    .loginButton {
+      background-color: $accent1;
+      place-self: center;
+      width: 100%;
+      padding: 10px 20px;
+      &:hover {
+        background-color: $accent1_hover;
+      }
+    }
+    .loginForgot {
+      place-self: center;
+      color: $text_dark;
     }
   }
 }

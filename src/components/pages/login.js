@@ -11,46 +11,69 @@ const Login = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    loginCallAdmin(
-      { email: email.current.value, password: password.current.value },
-      dispatch
-    );
-
-    // loginCallStudent(
-    //   { email: email.current.value, password: password.current.value },
-    //   dispatch
-    // );
+    if (type === 0)
+      loginCallAdmin(
+        { email: email.current.value, password: password.current.value },
+        dispatch
+      );
+    else
+      loginCallStudent(
+        { email: email.current.value, password: password.current.value },
+        dispatch
+      );
   };
 
   return (
-    <div className="login">
-      <form className="loginBox" onSubmit={handleClick}>
-        <input
-          placeholder="Email"
-          type="email"
-          required
-          className="loginInput"
-          ref={email}
-        />
-        <input
-          placeholder="Password"
-          type="password"
-          required
-          minLength="6"
-          className="loginInput"
-          ref={password}
-        />
-        <button className="loginButton" type="submit" disabled={isFetching}>
-          {isFetching ? "Loading..." : "Login"}
-        </button>
-        <button className="loginForgot">Forgot Password?</button>
-        <p>
-          Not registered yet?{" "}
-          <Link to="/register">
-            <button className="registerButton">Register</button>
-          </Link>
-        </p>
-      </form>
+    <div className="loginPageContainer">
+      <div className="login">
+        <div className="tabs">
+          <div
+            className={`tab ${type === 0 ? "selected" : null}`}
+            onClick={() => {
+              setType(0);
+            }}
+          >
+            <h3>Admin</h3>
+          </div>
+          <div
+            className={`tab ${type === 1 ? "selected" : null}`}
+            onClick={() => {
+              setType(1);
+            }}
+          >
+            <h3>Student</h3>
+          </div>
+        </div>
+
+        <div className="loginContent">
+          <form className="loginBox" onSubmit={handleClick}>
+            <h1>Login</h1>
+            <h3>Email</h3>
+            <input
+              placeholder="abc@gmail.com"
+              type="email"
+              required
+              className="loginInput"
+              ref={email}
+            />
+            <h3>Password</h3>
+            <input
+              placeholder="123456"
+              type="password"
+              required
+              minLength="6"
+              className="loginInput"
+              ref={password}
+            />
+            <button className="loginButton" type="submit" disabled={isFetching}>
+              {isFetching ? "Loading..." : "Login"}
+            </button>
+            {type === 0 ? (
+              <button className="loginForgot">Forgot Password?</button>
+            ) : null}
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

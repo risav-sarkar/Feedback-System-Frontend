@@ -53,7 +53,7 @@ input {
   height: -moz-fit-content;
   height: fit-content;
   width: 100%;
-  font-size: 22px;
+  font-size: 18px;
   background-color: #f5f4f7;
   padding: 15px;
   border: 3px solid #f5f4f7;
@@ -617,4 +617,93 @@ input:focus {
   display: -ms-grid;
   display: grid;
   gap: 15px;
+}
+
+.loginPageContainer {
+  padding: 10px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.loginPageContainer .login {
+  max-width: 500px;
+  width: 100%;
+}
+
+.loginPageContainer .tabs {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  place-items: center;
+}
+
+.loginPageContainer .tabs .tab {
+  padding: 10px;
+  width: 100%;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.loginPageContainer .tabs .tab:hover {
+  background-color: #a8a8a8;
+}
+
+.loginPageContainer .tabs .selected {
+  background-color: #fff;
+}
+
+.loginPageContainer .tabs .selected:hover {
+  background-color: #fff;
+}
+
+.loginPageContainer .loginContent {
+  padding: 10px 10px 20px 10px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.loginPageContainer .loginBox {
+  display: -ms-grid;
+  display: grid;
+  gap: 10px;
+}
+
+.loginPageContainer .loginBox h1 {
+  padding: 10px 0 0 10px;
+  margin-bottom: 8px;
+}
+
+.loginPageContainer .loginBox input {
+  background-color: transparent;
+  border: 3px solid #161618;
+}
+
+.loginPageContainer .loginBox input:focus {
+  border: 3px solid #3c26ca;
+}
+
+.loginPageContainer .loginBox button {
+  max-width: 200px;
+}
+
+.loginPageContainer .loginBox .loginButton {
+  background-color: #3c26ca;
+  place-self: center;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.loginPageContainer .loginBox .loginButton:hover {
+  background-color: #3b1cff;
+}
+
+.loginPageContainer .loginBox .loginForgot {
+  place-self: center;
+  color: #161618;
 }

@@ -3,15 +3,15 @@ import axios from "axios";
 export const loginCallAdmin = async (userCredential, dispatch) => {
   dispatch({ type: "LOGIN_START" });
   try {
-    // const res = await axios.get("http://192.168.43.240:8000/adm", {
-    //   params: {
-    //     email: "ahahaha@gmail.com",
-    //     password: "dsibsdfis",
-    //     type: "view",
-    //   },
-    // });
-    userCredential.type = "1";
-    const temp = { user: userCredential, institute: "testInst" };
+    const user = await axios.get("http://192.168.43.240:8000/adm", {
+      params: {
+        email: "ahahaha@gmail.com",
+        password: "dsibsdfis",
+        type: "view",
+      },
+    });
+    user.type = "0";
+    const temp = { user: user, institute: "testInst" };
     dispatch({ type: "LOGIN_SUCCESS", payload: temp });
   } catch (err) {
     dispatch({ type: "LOGIN_FAILURE", payload: err });
@@ -21,12 +21,16 @@ export const loginCallAdmin = async (userCredential, dispatch) => {
 export const loginCallStudent = async (userCredential, dispatch) => {
   dispatch({ type: "LOGIN_START" });
   try {
-    // const res = await axios.post(
-    //   "http://localhost:8000/api/auth/login",
-    //   userCredential
-    // );
-    // dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-    dispatch({ type: "LOGIN_SUCCESS", payload: userCredential });
+    const user = await axios.get("http://192.168.43.240:8000/adm", {
+      params: {
+        email: "ahahaha@gmail.com",
+        password: "dsibsdfis",
+        type: "view",
+      },
+    });
+    user.type = "1";
+    const temp = { user: user, institute: "testInst" };
+    dispatch({ type: "LOGIN_SUCCESS", payload: temp });
   } catch (err) {
     dispatch({ type: "LOGIN_FAILURE", payload: err });
   }

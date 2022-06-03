@@ -6,13 +6,15 @@ import {
   faCog,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import Icon from "../../assets/icon.png";
+import axios from "axios";
 
 const Navbar = ({ type, btn }) => {
-  // const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   return (
     <div className="navBar">
@@ -53,7 +55,23 @@ const Navbar = ({ type, btn }) => {
             </Link>
           </>
         ) : (
-          <button>
+          <button
+            onClick={() => {
+              const func = async () => {
+                const res = await axios.post(
+                  `http://192.168.43.240:8000/logout`,
+                  {
+                    student_id: user.id,
+                    auth_token: user.auth_token,
+                  }
+                );
+                console.log(res);
+                dispatch({ type: "LOGOUT" });
+                navigate("/login");
+              };
+              func();
+            }}
+          >
             <FontAwesomeIcon icon={faSignOutAlt} />
             <p>LogOut</p>
           </button>

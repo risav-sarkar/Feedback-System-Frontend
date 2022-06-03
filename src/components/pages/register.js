@@ -3,66 +3,123 @@ import { useRef } from "react";
 import { useNavigate } from "react-router";
 
 const Register = () => {
-  const username = useRef();
+  const firstName = useRef();
+  const lastName = useRef();
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
+  const uniqueId = useRef();
+  const instituteId = useRef();
   const navigate = useNavigate();
 
   const handleClick = async (e) => {
     e.preventDefault();
-    if (passwordAgain.current.value !== password.current.value) {
-      passwordAgain.current.setCustomValidity("Passwords don't match!");
-    } else {
-      const user = {
-        username: username.current.value,
-        email: email.current.value,
-        password: password.current.value,
-      };
-      try {
-        await axios.post("http://localhost:8000/api/auth/register", user);
-        navigate("/login");
-      } catch (err) {
-        console.log(err);
-      }
+    const user = {
+      first_name: firstName.current.value,
+      last_name: lastName.current.value,
+      email: email.current.value,
+      password: password.current.value,
+      institute_id: instituteId.current.value,
+    };
+    console.log(user);
+    try {
+      const res = await axios.post("http://192.168.43.240:8000/adm", user);
+      console.log(res);
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
     }
   };
-
   return (
-    <div className="login">
-      <form className="loginBox" onSubmit={handleClick}>
-        <input
-          placeholder="Username"
-          required
-          ref={username}
-          className="loginInput"
-        />
-        <input
-          placeholder="Email"
-          required
-          ref={email}
-          className="loginInput"
-          type="email"
-        />
-        <input
-          placeholder="Password"
-          required
-          ref={password}
-          className="loginInput"
-          type="password"
-          minLength="6"
-        />
-        <input
-          placeholder="Password Again"
-          required
-          ref={passwordAgain}
-          className="loginInput"
-          type="password"
-        />
-        <button className="loginButton" type="submit">
-          Sign Up
-        </button>
-      </form>
+    <div className="registerPageContainer loginPageContainer">
+      <div className="login">
+        <div className="loginContent register">
+          <form className="loginBox" onSubmit={handleClick}>
+            <h1>Register</h1>
+
+            <div className="loginBoxContent">
+              <div className="inputFieldBox">
+                <h3>First Name</h3>
+                <input
+                  placeholder="Enter first name here..."
+                  required
+                  ref={firstName}
+                  className="loginInput"
+                  type="text"
+                />
+              </div>
+
+              <div className="inputFieldBox">
+                <h3>Last Name</h3>
+                <input
+                  placeholder="Enter last name here..."
+                  required
+                  ref={lastName}
+                  className="loginInput"
+                  type="text"
+                />
+              </div>
+
+              <div className="inputFieldBox col-2">
+                <h3>Email</h3>
+                <input
+                  placeholder="Enter email here..."
+                  required
+                  ref={email}
+                  className="loginInput"
+                  type="email"
+                />
+              </div>
+
+              <div className="inputFieldBox">
+                <h3>Institute ID</h3>
+                <input
+                  placeholder="Enter institute id here..."
+                  required
+                  ref={instituteId}
+                  className="loginInput"
+                  type="text"
+                />
+              </div>
+
+              <div className="inputFieldBox">
+                <h3>Unique ID</h3>
+                <input
+                  placeholder="Enter admin id here..."
+                  ref={uniqueId}
+                  className="loginInput"
+                  type="text"
+                />
+              </div>
+
+              <div className="inputFieldBox">
+                <h3>Enter Password</h3>
+                <input
+                  placeholder="Enter Password"
+                  required
+                  ref={password}
+                  className="loginInput"
+                  type="password"
+                  minLength="6"
+                />
+              </div>
+
+              <div className="inputFieldBox">
+                <h3>Confirm Password</h3>
+                <input
+                  placeholder="Confirm Password"
+                  ref={passwordAgain}
+                  className="loginInput"
+                  type="password"
+                />
+              </div>
+            </div>
+            <button className="loginButton" type="submit">
+              Sign Up
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

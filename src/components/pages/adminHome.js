@@ -6,8 +6,8 @@ import axios from "axios";
 import Navbar from "../resuableComponents/navbar";
 
 const AdminHome = () => {
-  // const { user } = useContext(AuthContext);
-
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="layout">
       <Navbar type={0} btn={1} />

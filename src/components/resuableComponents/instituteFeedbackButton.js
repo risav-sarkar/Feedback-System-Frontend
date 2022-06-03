@@ -3,8 +3,9 @@ import { faSquare, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import axios from "axios";
 
-const InstituteFeedbackButton = () => {
+const InstituteFeedbackButton = ({ name, id, institute }) => {
   const [modal, setModal] = useState(false);
   const [text, setText] = useState({ desc: "" });
 
@@ -17,6 +18,16 @@ const InstituteFeedbackButton = () => {
     });
   };
 
+  const HandleSubmit = async () => {
+    const res = await axios.post("http://192.168.43.240:8000/feedback", {
+      type: "institute",
+      text: text.desc.replace(/<\/?[^>]+(>|$)/g, ""),
+      entity_id: institute,
+      id,
+    });
+    console.log(res);
+  };
+
   return (
     <>
       <div
@@ -25,7 +36,7 @@ const InstituteFeedbackButton = () => {
           setModal(true);
         }}
       >
-        <h2>Institute Name </h2>
+        <h2>{name}</h2>
         <div className="icon">
           <FontAwesomeIcon icon={faSquare} />
         </div>
@@ -59,7 +70,14 @@ const InstituteFeedbackButton = () => {
                 placeholder="Write something here..."
               />
               <div className="btnContainer">
-                <button>Submit</button>
+                <button
+                  onClick={() => {
+                    HandleSubmit();
+                    setModal(false);
+                  }}
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </div>

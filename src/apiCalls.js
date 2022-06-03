@@ -3,58 +3,30 @@ import axios from "axios";
 export const loginCallAdmin = async (userCredential, dispatch) => {
   dispatch({ type: "LOGIN_START" });
   try {
-    const user = await axios.get("http://192.168.43.240:8000/adm", {
-      params: {
-        email: "ahahaha@gmail.com",
-        password: "dsibsdfis",
-        type: "view",
-      },
-    });
-    user.type = "0";
-    const temp = { user: user, institute: "testInst" };
+    const res = await axios.get(
+      `http://192.168.43.240:8000/adm?email=${userCredential.email}&password=${userCredential.password}`
+    );
+    console.log(res.status);
+    res.data.data.type = "0";
+    const temp = { user: res.data.data, institute: "testInst" };
     dispatch({ type: "LOGIN_SUCCESS", payload: temp });
   } catch (err) {
-    dispatch({ type: "LOGIN_FAILURE", payload: err });
+    dispatch({ type: "LOGIN_FAILURE", payload: true });
   }
 };
 
 export const loginCallStudent = async (userCredential, dispatch) => {
   dispatch({ type: "LOGIN_START" });
   try {
-    const user = await axios.get("http://192.168.43.240:8000/adm", {
-      params: {
-        email: "ahahaha@gmail.com",
-        password: "dsibsdfis",
-        type: "view",
-      },
-    });
-    user.type = "1";
-    const temp = { user: user, institute: "testInst" };
+    const res = await axios.get(
+      `http://192.168.43.240:8000/student?email=${userCredential.email}&password=${userCredential.password}`
+    );
+    console.log(res);
+    res.data.data.type = "1";
+    res.data.data.instituteDetails = res.data.institute;
+    const temp = { user: res.data.data, institute: "testInst" };
     dispatch({ type: "LOGIN_SUCCESS", payload: temp });
   } catch (err) {
-    dispatch({ type: "LOGIN_FAILURE", payload: err });
-  }
-};
-
-export const updateUser = async (data, dispatch) => {
-  try {
-    // const res = await axios.post(
-    //   "http://localhost:8000/api/auth/login",
-    //   userCredential
-    // );
-    // dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-    const temp = { user: data.user, institute: data.institute };
-    dispatch({ type: "UPDATE_USER", payload: temp });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const updateInstitute = async (data, dispatch) => {
-  try {
-    const temp = { user: data.user, institute: data.institute };
-    dispatch({ type: "UPDATE_USER", payload: temp });
-  } catch (err) {
-    console.log(err);
+    dispatch({ type: "LOGIN_FAILURE", payload: true });
   }
 };

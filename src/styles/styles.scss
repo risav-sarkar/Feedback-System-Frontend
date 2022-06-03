@@ -286,7 +286,6 @@ input {
       flex-direction: column;
       gap: 10px;
       width: 100%;
-      overflow: hidden;
     }
     .modalHeader {
       display: flex;
@@ -299,6 +298,9 @@ input {
         padding: 10px 20px;
         cursor: pointer;
       }
+    }
+    h2{
+      color: $text_dark;
     }
   }
 }
@@ -348,7 +350,13 @@ input {
 .italic {
   font-style: italic;
 }
-
+.alertBox{
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  background-color: rgb(255, 102, 102);
+  border-radius: 15px;
+}
 //SNIPPETS
 .Dropdown-control {
   border-radius: 15px !important;
@@ -391,6 +399,15 @@ input {
 .studentPageContainer {
   display: grid;
   place-items: center;
+
+  .headerSection{
+    max-width: 800px;
+    width: 100%;
+    padding-bottom: 10px;
+    h1{
+      place-self: start;
+    }
+  }
   .feedBackButtonsContainer {
     max-width: $max_width2;
     width: 100%;
@@ -406,11 +423,9 @@ input {
       color: $text_white;
       text-align: center;
       overflow: hidden;
+      padding: 10px;
       cursor: pointer;
 
-      h2 {
-        padding: 10px;
-      }
       .icon {
         display: grid;
         place-items: center;
@@ -591,5 +606,45 @@ input {
       place-self: center;
       color: $text_dark;
     }
+  }
+}
+
+.registerPageContainer {
+  padding: 10px;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+
+  .register {
+    .loginBoxContent {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+
+      .inputFieldBox {
+        display: grid;
+        gap: 10px;
+      }
+    }
+    .loginButton {
+      margin-top: 15px;
+    }
+    @media (min-width: 500px) {
+      .loginBoxContent {
+        .col-2 {
+          grid-column: 1/3;
+        }
+      }
+    }
+    @media (max-width: 500px) {
+      .loginBoxContent {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .registerPageContainer {
+    height: auto;
   }
 }

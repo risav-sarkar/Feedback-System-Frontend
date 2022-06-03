@@ -1,15 +1,31 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { loginCallAdmin, loginCallStudent } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router";
+import axios from "axios";
+import AlertBox from "../resuableComponents/alertBox";
 
 const Login = () => {
+  const { error } = useContext(AuthContext);
+
   const email = useRef();
   const password = useRef();
   const [type, setType] = useState(0);
   const { isFetching, dispatch } = useContext(AuthContext);
+  const [messageBox, setMessageBox] = useState("");
 
-  const handleClick = (e) => {
+  useEffect(() => {
+    if (error === true) {
+      setMessageBox("Password and Email do not match!");
+      const timer = setTimeout(() => {
+        setMessageBox("");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
+  const handleClick = async (e) => {
     e.preventDefault();
     if (type === 0)
       loginCallAdmin(
@@ -65,6 +81,9 @@ const Login = () => {
               className="loginInput"
               ref={password}
             />
+            {messageBox ? (
+              <AlertBox data={"Password and Email do not match!"} />
+            ) : null}
             <button className="loginButton" type="submit" disabled={isFetching}>
               {isFetching ? "Loading..." : "Login"}
             </button>

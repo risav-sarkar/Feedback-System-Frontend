@@ -15,21 +15,141 @@ import AddFaculty from "./components/pages/addFaculty";
 import AddStudent from "./components/pages/addClasses";
 import Settings from "./components/pages/settings";
 import Login from "./components/pages/login";
+import Register from "./components/pages/register";
 
 const App = () => {
-  const { user, institute } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   console.log(user);
-  console.log(institute);
 
   return (
     <Router>
       <Routes>
-        <Route exact path="/admin" element={<AdminHome />} />
-        <Route exact path="/student" element={<StudentHome />} />
-        <Route exact path="/faculty" element={<AddFaculty />} />
-        <Route exact path="/classes" element={<AddStudent />} />
-        <Route exact path="/settings" element={<Settings />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route
+          exact
+          path="/"
+          element={
+            user ? (
+              user.type === "0" ? (
+                <Navigate to="/admin" />
+              ) : (
+                <Navigate to="/student" />
+              )
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
+        <Route
+          exact
+          path="/admin"
+          element={
+            user ? (
+              user.type === "0" ? (
+                <AdminHome />
+              ) : (
+                <Navigate to="/" />
+              )
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
+        <Route
+          exact
+          path="/student"
+          element={
+            user ? (
+              user.type === "0" ? (
+                <Navigate to="/" />
+              ) : (
+                <StudentHome />
+              )
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
+        <Route
+          exact
+          path="/login"
+          element={
+            user ? (
+              user.type === "0" ? (
+                <Navigate to="/admin" />
+              ) : (
+                <Navigate to="/student" />
+              )
+            ) : (
+              <Login />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/register"
+          element={
+            user ? (
+              user.type === "0" ? (
+                <Navigate to="/admin" />
+              ) : (
+                <Navigate to="/student" />
+              )
+            ) : (
+              <Register />
+            )
+          }
+        />
+
+        <Route
+          exact
+          path="/faculty"
+          element={
+            user ? (
+              user.type === "0" ? (
+                <AddFaculty />
+              ) : (
+                <Navigate to="/" />
+              )
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
+        <Route
+          exact
+          path="/classes"
+          element={
+            user ? (
+              user.type === "0" ? (
+                <AddStudent />
+              ) : (
+                <Navigate to="/" />
+              )
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
+        <Route
+          exact
+          path="/settings"
+          element={
+            user ? (
+              user.type === "0" ? (
+                <Settings />
+              ) : (
+                <Navigate to="/" />
+              )
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
       </Routes>
     </Router>
   );

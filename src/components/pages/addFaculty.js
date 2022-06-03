@@ -7,16 +7,39 @@ import Navbar from "../resuableComponents/navbar";
 import ListItem from "../resuableComponents/listItem";
 
 const AddFaculty = () => {
-  // const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
   const [facultyList, setFacultyList] = useState([]);
   const nameRef = useRef("");
   const formRef = useRef();
 
+  console.log(facultyList);
+
+  useEffect(() => {
+    FetchFacultyList();
+  }, []);
+
+  const FetchFacultyList = async () => {
+    const res = await axios.get(
+      `http://192.168.43.240:8000/faculty?admin_id=${user.id}`
+    );
+    setFacultyList(res.data.data);
+  };
+
   const HandleSubmit = (e) => {
     e.preventDefault();
     if (nameRef.current.value === "") return;
-    setFacultyList([...facultyList, nameRef.current.value]);
-    formRef.current.reset();
+
+    const func = async () => {
+      const res = await axios.post("http://192.168.43.240:8000/faculty", {
+        admin_id: user.id,
+        auth_token: user.auth_token,
+        name: nameRef.current.value,
+      });
+      formRef.current.reset();
+      FetchFacultyList();
+    };
+    func();
   };
 
   return (
@@ -36,6 +59,7 @@ const AddFaculty = () => {
                   <input
                     type="text"
                     ref={nameRef}
+                    minLength="2"
                     placeholder={"Type Faculty Name"}
                     required
                   />
@@ -46,7 +70,7 @@ const AddFaculty = () => {
                 {facultyList.map((e, index) => {
                   return (
                     <ListItem
-                      name={e}
+                      name={e.name}
                       deleteFunc={() => {
                         const newUsers = facultyList.slice();
                         newUsers.splice(index, 1);

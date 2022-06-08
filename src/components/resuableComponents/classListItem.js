@@ -188,12 +188,25 @@ const ClassListItem = ({ data, deleteFunc }) => {
                 {facultyClass.map((e, index) => {
                   return (
                     <ListItem
-                      name={GetNameById(e.teacher)}
+                      name={
+                        e.teacher === null
+                          ? "No Teacher Assigned"
+                          : GetNameById(e.teacher)
+                      }
                       email={e.name}
-                      deleteFunc={() => {
-                        const newUsers = faculty.slice();
-                        newUsers.splice(index, 1);
-                        setFacultyClass(newUsers);
+                      deleteFunc={async () => {
+                        const res = await axios.delete(
+                          "http://192.168.43.240:8000/subject",
+                          {
+                            data: {
+                              auth_token: user.auth_token,
+                              admin_id: user.id,
+                              subject_id: e.id,
+                            },
+                          }
+                        );
+                        FetchFacultyClass();
+                        console.log(res);
                       }}
                       key={`${data.name}classFacultyList${index}`}
                     />
@@ -242,10 +255,20 @@ const ClassListItem = ({ data, deleteFunc }) => {
                     <ListItem
                       name={`${e.first_name} ${e.last_name}`}
                       email={e.email}
-                      deleteFunc={() => {
-                        const newUsers = students.slice();
-                        newUsers.splice(index, 1);
-                        setStudents(newUsers);
+                      deleteFunc={async () => {
+                        console.log("Student Delete Call");
+                        const res = await axios.delete(
+                          "http://192.168.43.240:8000/student",
+                          {
+                            data: {
+                              auth_token: user.auth_token,
+                              admin_id: user.id,
+                              student_id: e.id,
+                            },
+                          }
+                        );
+                        FetchStudentClass();
+                        console.log(res);
                       }}
                       key={`${data.name}classStudentList${index}`}
                     />

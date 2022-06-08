@@ -344,10 +344,6 @@ input:focus {
   cursor: pointer;
 }
 
-.modalContainer .modalContent h2 {
-  color: #161618;
-}
-
 .listItem {
   display: -ms-grid;
   display: grid;

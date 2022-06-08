@@ -71,10 +71,19 @@ const AddFaculty = () => {
                   return (
                     <ListItem
                       name={e.name}
-                      deleteFunc={() => {
-                        const newUsers = facultyList.slice();
-                        newUsers.splice(index, 1);
-                        setFacultyList(newUsers);
+                      deleteFunc={async () => {
+                        const res = await axios.delete(
+                          "http://192.168.43.240:8000/faculty",
+                          {
+                            data: {
+                              auth_token: user.auth_token,
+                              admin_id: user.id,
+                              teacher_id: e.id,
+                            },
+                          }
+                        );
+                        FetchFacultyList();
+                        console.log(res);
                       }}
                       key={`facultyItem${index}`}
                     />

@@ -89,7 +89,7 @@ const SubjectFeedbackButton = ({ data, id }) => {
                   <FontAwesomeIcon icon={faTimes} />
                 </div>
               </div>
-              <h2>{data.name}</h2>
+              <h2 style={{ color: "black" }}>{data.name}</h2>
               <h3 className="italic">
                 Write a concise summary about your teacher in proper english.
                 Try to be as descriptive as possible.
@@ -107,7 +107,7 @@ const SubjectFeedbackButton = ({ data, id }) => {
               <div className="modalHeader">
                 <h2>Faculty Feedback</h2>
               </div>
-              <h2>{techerName}</h2>
+              <h2 style={{ color: "black" }}>{techerName}</h2>
               <h3 className="italic">
                 Write a concise summary about your teacher in proper english.
                 Try to be as descriptive as possible.

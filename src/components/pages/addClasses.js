@@ -116,8 +116,19 @@ const AddStudent = () => {
                   return (
                     <ClassListItem
                       data={e}
-                      deleteFunc={() => {
-                        const newUsers = "";
+                      deleteFunc={async () => {
+                        const res = await axios.delete(
+                          "http://192.168.43.240:8000/course",
+                          {
+                            data: {
+                              auth_token: user.auth_token,
+                              admin_id: user.id,
+                              course_id: e.id,
+                            },
+                          }
+                        );
+                        FetchClassList();
+                        console.log(res);
                       }}
                       key={`facultyItem${index}`}
                     />
